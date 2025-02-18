@@ -1,5 +1,18 @@
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.android.options.UiAutomator2Options;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
 
 public class Activity5 {
     // Driver Declaration
@@ -18,7 +31,7 @@ public class Activity5 {
         options.noReset();
 
         // Server Address
-        URL serverURL = new URL("http://localhost:4723/");
+        URL serverURL = new URL("http://localhost:4723/wd/hub");
 
         // Driver Initialization
         driver = new AndroidDriver(serverURL, options);
@@ -37,9 +50,9 @@ public class Activity5 {
         ));
 
         // Find the element to add recipient
-        driver.findElement(AppiumBy.id("recipient_text_view")).sendKeys("18282832912");
+        driver.findElement(AppiumBy.id("recipient_text_view")).sendKeys("7908355231");
         // Press ENTER
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.ENTER));
 
         // Wait for textbox to appear
         wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("compose_message_text")));

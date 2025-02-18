@@ -1,22 +1,10 @@
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.options.UiAutomator2Options;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
-
 public class Activity2 {
     // Driver Declaration
     AndroidDriver driver;
-    WebDriverWait wait;
+
     // Set up method
     @BeforeClass
-    public void setUp() throws MalformedURLException, InterruptedException {
+    public void setUp() throws MalformedURLException, URISyntaxException {
         // Desired Capabilities
         UiAutomator2Options options = new UiAutomator2Options();
         options.setPlatformName("android");
@@ -25,24 +13,35 @@ public class Activity2 {
         options.setAppActivity("com.google.android.apps.chrome.Main");
         options.noReset();
 
-        // Server Address
-        URL serverURL = new URL("http://localhost:4723/wd/hub");
+        // Set the Appium server URL
+        URL serverURL = new URI("http://localhost:4723").toURL();
 
         // Driver Initialization
         driver = new AndroidDriver(serverURL, options);
-        driver.get("https://www.training-support.net");
-        wait = new WebDriverWait(driver , Duration.ofSeconds(10));
+
+        // Open the page in Chrome
+        driver.get("https://training-support.net");
     }
 
     // Test method
     @Test
-    public void chromeTest() throws InterruptedException {
+    public void chromeTest() {
+        // Find heading on the page
+        String pageHeading = driver.findElement(AppiumBy.xpath(
+                "//android.widget.TextView[@text='Training Support']"
+        )).getText();
 
+        // Print to console
+        System.out.println("Heading: " + pageHeading);
 
-        String pageHeading = driver.findElement(AppiumBy.xpath( "//android.view.View[@text='Training Support']"))
-                .getText();
-        System.out.println(pageHeading);
-        System.out.println("Test block executed");
+        // Find and click the About Us link
+        driver.findElement(AppiumBy.accessibilityId("About Us")).click();
+
+        // Find heading of new page and print to console
+        String aboutPageHeading = driver.findElement(AppiumBy.xpath(
+                "//android.widget.TextView[@text='About Us']"
+        )).getText();
+        System.out.println(aboutPageHeading);
     }
 
 
