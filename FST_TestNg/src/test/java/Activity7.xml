@@ -1,0 +1,9 @@
+<suite name="softwaretestingmaterial">
+    <test name="parametertest">
+        <parameter name="Username" value="admin"/>
+        <parameter name="password" value="password"/>
+        <classes>
+            <class name="testNG.Activity6"/>
+        </classes>
+    </test>
+</suite>

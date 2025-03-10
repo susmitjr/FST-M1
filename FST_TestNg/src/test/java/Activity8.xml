@@ -1,0 +1,14 @@
+<suite name="softwaretestingmaterial" parallel="classes" thread-count="8">
+<test name="Training Activities">
+<classes>
+<class name="testNG.Activity1"></class>
+<class name="testNG.Activity2"></class>
+<class name="testNG.Activity3"></class>
+<class name="suiteExample.Activity4_DemoOne"></class>
+<class name="suiteExample.Activity4_DemoTwo"></class>
+<class name="testNG.Activity5"></class>
+<class name="testNG.Activity6"></class>
+<class name="testNG.Activity7"></class>
+</classes>
+</test>
+</suite>

@@ -1,0 +1,10 @@
+Update the grade score of salesmen from Rome to 200.
+Update the grade score of James Hoog to 300.
+Update the name McLyon to Pierre.
+UPDATE salesman SET grade ='200' where SALESMAN_CITY ='Rome'
+SELECT * FROM salesman where grade ='200'
+UPDATE salesman SET grade ='300' where SALESMAN_NAME='James Hoog'
+SELECT * FROM salesman where grade='300'
+UPDATE salesman SET SALESMAN_NAME ='Pierre' WHERE SALESMAN_NAME='McLyon'
+SELECT * FROM salesman where salesman_name='Pierre'
+ 

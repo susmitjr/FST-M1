@@ -1,13 +1,12 @@
 @activity5
-Feature: Data driven test with Example
+Feature: Login Test
 
-  Scenario Outline: Testing with Data from Scenario
-    Given User is on Login page
-    When User enters "<Usernames>" and "<Passwords>"
-    #Then Read the page title and confirmation message
-    And Close the Browser
+  Scenario Outline: Testing Login with Example
+    Given the user is on the login page
+    When the user enters "<Usernames>" and "<Passwords>"
+    And clicks the submit button
+    Then get the confirmation text and verify message as "<Message>"
 
     Examples:
-      | Usernames | Passwords |
-      | admin     | password  |
-      | adminUser | Password  |
+      | Usernames | Passwords | Message                  |
+      | admin     | password  | Welcome Back, admin      |
